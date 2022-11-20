@@ -23,7 +23,7 @@ public class Task {
 //    @ManyToOne
 //    private History history;
 
-    @JoinColumn(name="typeId", nullable = false)
+    @JoinColumn(name="type_id", nullable = true)
     @ManyToOne
     private Type type;
 
