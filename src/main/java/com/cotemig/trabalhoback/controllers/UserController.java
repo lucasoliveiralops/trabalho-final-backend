@@ -19,13 +19,13 @@ public class UserController {
   private UserService userService;
 
   @GetMapping("/mock")
-  public ResponseEntity<String> createMock(){
+  public ResponseEntity<String> createMock() {
     userService.mockUsers();
     return new ResponseEntity<>("<a href=\"/users\">SUCCESS, CLICK HERE!</a>", HttpStatus.OK);
   }
 
   @GetMapping("")
-  public ResponseEntity<List<User>> showUsers(){
+  public ResponseEntity<List<User>> showUsers() {
     List<User> users = userService.showUsers();
 
     return new ResponseEntity<>(users, HttpStatus.OK);
@@ -33,13 +33,13 @@ public class UserController {
 
   @GetMapping("/{id}")
   public ResponseEntity<User> indexUser(@PathVariable("id") long id) {
-    if(id < 0){
-      return new ResponseEntity<>(HttpStatus.BAD_REQUEST) ;
+    if (id < 0) {
+      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     User user = userService.indexUser(id);
 
-    if(user == null){
+    if (user == null) {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
