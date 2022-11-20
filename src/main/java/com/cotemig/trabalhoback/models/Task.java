@@ -8,7 +8,6 @@ import java.util.Date;
 
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "tasks")
 public class Task {
     @Id
@@ -19,28 +18,21 @@ public class Task {
     private Integer status = 1;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date estimate;
-    private long userId;
-    private long typeId;
-    private long kanbanStepId;
 
-    public Task(Integer id, String name, String description, Date estimate, long userId, long typeId, long kanbanStepId, Integer status) {
-        this.id = id;
+//    private User user;
+//    @ManyToOne
+//    private History history;
+
+    @JoinColumn(name="typeId", nullable = false)
+    @ManyToOne
+    private Type type;
+
+    public Task() {}
+
+    public Task(String name, String description, Date estimate, Integer status) {
         this.name = name;
         this.description = description;
         this.estimate = estimate;
-        this.userId = userId;
-        this.typeId = typeId;
-        this.kanbanStepId = kanbanStepId;
-        this.status = status;
-    }
-
-    public Task(String name, String description, Date estimate, long userId, long typeId, long kanbanStepId, Integer status) {
-        this.name = name;
-        this.description = description;
-        this.estimate = estimate;
-        this.userId = userId;
-        this.typeId = typeId;
-        this.kanbanStepId = kanbanStepId;
         this.status = status;
     }
 
@@ -84,30 +76,6 @@ public class Task {
         this.estimate = estimate;
     }
 
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-    public long getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(long typeId) {
-        this.typeId = typeId;
-    }
-
-    public long getKanbanStepId() {
-        return kanbanStepId;
-    }
-
-    public void setKanbanStepId(long kanbanStepId) {
-        this.kanbanStepId = kanbanStepId;
-    }
-
     @Override
     public String toString() {
         return "Task{" +
@@ -115,11 +83,6 @@ public class Task {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", estimate=" + estimate +
-                ", userId=" + userId +
-                ", typeId=" + typeId +
-                ", kanbanStepId=" + kanbanStepId +
                 '}';
     }
-
-    
 }
