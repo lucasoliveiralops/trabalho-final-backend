@@ -35,12 +35,7 @@ public class TaskServiceImpl implements TaskService {
   }
 
   @Override
-  public Task updateTask(long id, Task task) {
-    boolean taskExist = getTaskById(id) != null;
-    if (!taskExist) {
-      return null;
-    }
-
+  public Task updateTask(Task task) {
     return taskRepository.save(task);
   }
 

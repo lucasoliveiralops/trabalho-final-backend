@@ -8,45 +8,42 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private String name = "";
-    private String imageUrl = "";
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private long id;
+  private String name = "";
+  private String imageUrl = "";
 
-    public User() { }
+  public User() {
+  }
 
-    public User(String name, String imageUrl) {
-        this.name = name;
-        this.imageUrl = imageUrl;
-    }
+  public User(String name, String imageUrl) {
+    this.name = name;
+    this.imageUrl = imageUrl;
+  }
 
-    public long getId() {
-        return id;
-    }
+  public long getId() {
+    return id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
+  public String getImageUrl() {
+    return imageUrl;
+  }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "User{" + "id=" + id + ", name='" + name + '\'' + ", imageUrl='" + imageUrl + '\'' + '}';
+  }
 }

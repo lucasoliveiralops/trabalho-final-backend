@@ -15,14 +15,12 @@ public class History {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date createdAt;
     private long taskId;
-    private long kanbanStepId;
 
     public History() { }
 
-    public History(Date createdAt, long taskId, long kanbanStepId) {
+    public History(Date createdAt, long taskId) {
         this.createdAt = createdAt;
         this.taskId = taskId;
-        this.kanbanStepId = kanbanStepId;
     }
 
     public Date getCreatedAt() {
@@ -41,20 +39,11 @@ public class History {
         this.taskId = taskId;
     }
 
-    public long getKanbanStepId() {
-        return kanbanStepId;
-    }
-
-    public void setKanbanStepId(long kanbanStepId) {
-        this.kanbanStepId = kanbanStepId;
-    }
-
     @Override
     public String toString() {
         return "History{" +
                 "createdAt=" + createdAt +
                 ", taskId=" + taskId +
-                ", kanbanStepId=" + kanbanStepId +
                 '}';
     }
 }

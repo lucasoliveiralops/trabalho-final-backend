@@ -12,7 +12,7 @@ public interface TaskService {
 
   public Task createTask(Task task);
 
-  public Task updateTask(long id, Task task);
+  public Task updateTask(Task task);
 
   public Task deleteTask(long id);
 }
