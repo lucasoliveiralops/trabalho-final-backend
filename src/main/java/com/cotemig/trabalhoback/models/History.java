@@ -14,47 +14,14 @@ public class History {
     private long id;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date createdAt;
-    private long taskId;
-    private long kanbanStepId;
 
-    public History() { }
+    @ManyToMany
+    @JoinColumn(name="task_id", nullable = false)
+    private Task task;
 
-    public History(Date createdAt, long taskId, long kanbanStepId) {
-        this.createdAt = createdAt;
-        this.taskId = taskId;
-        this.kanbanStepId = kanbanStepId;
-    }
+    @ManyToMany
+    @JoinColumn(name="kanban_id", nullable = false)
+    private Kanban kanban;
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public long getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskId(long taskId) {
-        this.taskId = taskId;
-    }
-
-    public long getKanbanStepId() {
-        return kanbanStepId;
-    }
-
-    public void setKanbanStepId(long kanbanStepId) {
-        this.kanbanStepId = kanbanStepId;
-    }
-
-    @Override
-    public String toString() {
-        return "History{" +
-                "createdAt=" + createdAt +
-                ", taskId=" + taskId +
-                ", kanbanStepId=" + kanbanStepId +
-                '}';
-    }
 }
