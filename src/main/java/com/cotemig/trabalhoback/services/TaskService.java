@@ -6,8 +6,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TaskService {
-  public Optional<Task> getTaskById(long id);
+  public Task getTaskById(long id);
 
   public List<Task> getAllTasks(long id);
 
+  public Task createTask(Task task);
+
+  public Task updateTask(long id, Task task);
+
+  public Task deleteTask(long id);
 }
