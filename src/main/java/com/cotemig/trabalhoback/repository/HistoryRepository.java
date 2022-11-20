@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface HistoryRepository extends JpaRepository<History, Long> {
-    @Query(value = "SELECT * FROM history WHERE task_i = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM histories WHERE task_id = ?1", nativeQuery = true)
     List<History> getByTaskId(Long taskId);
 }

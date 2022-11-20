@@ -1,6 +1,8 @@
 package com.cotemig.trabalhoback.controllers;
 
+import com.cotemig.trabalhoback.models.History;
 import com.cotemig.trabalhoback.models.Task;
+import com.cotemig.trabalhoback.services.HistoryService;
 import com.cotemig.trabalhoback.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,8 @@ import java.util.List;
 public class TaskController {
     @Autowired
     private TaskService taskService;
+    @Autowired
+    private HistoryService historyService;
 
     @GetMapping("")
     public ResponseEntity<List<Task>> index(){
