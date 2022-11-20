@@ -4,8 +4,6 @@ O principal objetivo da aplicação é o controle de tarefas simples do
 usuário.
 
 
-
-
 ## Funcionalidades da Aplicação
 
 #### Criação de tarefas
