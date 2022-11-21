@@ -1,6 +1,8 @@
 package com.cotemig.trabalhoback.services;
 
+import com.cotemig.trabalhoback.models.Kanban;
 import com.cotemig.trabalhoback.models.User;
+import com.cotemig.trabalhoback.repository.KanbanRepository;
 import com.cotemig.trabalhoback.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,12 +15,15 @@ public class UserService {
   @Autowired
   private UserRepository userRepository;
 
+  @Autowired
+  private KanbanRepository kanbanRepository;
+
   public long createUser(User user) {
     User userCreated = userRepository.save(user);
     return userCreated.getId();
   }
 
-  public User indexUser(long id) {
+  public User readUser(long id) {
     Optional<User> user = userRepository.findById(id);
 
     if (!user.isPresent()) {
@@ -43,11 +48,11 @@ public class UserService {
     return userUpdated.get();
   }
 
-  public List<User> showUsers() {
+  public List<User> getAllUsers() {
     return userRepository.findAll();
   }
 
-  public boolean destroyUser(long id) {
+  public boolean deleteUser(long id) {
     userRepository.deleteById(id);
 
     Optional<User> user = userRepository.findById(id);
@@ -56,7 +61,11 @@ public class UserService {
   }
 
   public void mockUsers(){
-    if(showUsers().isEmpty()){
+    if(getAllUsers().isEmpty()){
+      // kanbanRepository.save(new Kanban("Todo"));
+      // kanbanRepository.save(new Kanban("Doing"));
+      // kanbanRepository.save(new Kanban("Done"));
+
       User owner = new User();
       owner.setName("User Owner");
       owner.setImageUrl("https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png");

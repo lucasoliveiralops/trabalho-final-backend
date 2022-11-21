@@ -19,13 +19,13 @@ public class Task {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date estimate;
 
-//    private User user;
-//    @ManyToOne
-//    private History history;
-
-    @JoinColumn(name="type_id", nullable = true)
     @ManyToOne
-    private Type type;
+    @JoinColumn(name="user_id")
+    private User user;
+
+//    @JoinColumn(name="type_id", nullable = true)
+//    @ManyToOne
+//    private Type type;
 
     public Task() {}
 
@@ -76,13 +76,11 @@ public class Task {
         this.estimate = estimate;
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", estimate=" + estimate +
-                '}';
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
